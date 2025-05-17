@@ -1,0 +1,5 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/MarkdownUtilities.csproj" />
+  </Folder>
+</Solution>
