@@ -18,7 +18,7 @@ This is a collection of markdown utilities.
 From PowerShell:
 
 ```powershell
-& ./publish.ps1
+& ./build.ps1
 ```
 
 ## Usage
@@ -46,7 +46,7 @@ Console.WriteLine(table);
 
 ### PowerShell
 
-Download and extract the the last release.
+Download and extract the the last net21 release.
 
 ```powershell
 Add-Type -Path .\path\to\MarkdownUtilities.dll
