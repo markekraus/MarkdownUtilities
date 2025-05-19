@@ -5,21 +5,21 @@ namespace MarkdownUtilities;
 public class MDTableColumn
 {
     public readonly string Header;
-    public ImmutableList<string> Rows { get; private set; }
+    public ImmutableArray<string> Rows => ImmutableArray.Create<string>(_rows.ToArray());
     public int MaxWidth { get; private set; }
-    public int RowCount => Rows is null ? 0 : Rows.Count;
+    public int RowCount => _rows is null ? 0 : _rows.Count;
+    private List<string> _rows = new();
 
     public MDTableColumn(string Header)
     {
         this.Header = string.IsNullOrWhiteSpace(Header) ? " " : Header;
         this.MaxWidth = this.Header.Length;
-        Rows = ImmutableList.Create<string>();
     }
 
     public void AddRow(string row)
     {
         var escaped = EscapeText(row);
-        Rows = Rows.Add(escaped);
+        _rows.Add(escaped);
         UpdateMaxWidth(escaped);
     }
 
