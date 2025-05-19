@@ -69,7 +69,8 @@ var table = new MDTableBuilder()
   .WithHeaders("First Name", "Last Name")
   .AddRow("Mark", "Kraus")
   .AddRow("Karl", "Marx")
-  .AddRow("Friedrich", "Engels");
+  .AddRow("Friedrich", "Engels")
+  .AddRow("Nestor", "Makhno");
 Console.WriteLine(table);
 ```
 
@@ -81,6 +82,7 @@ Result:
 | Mark       | Kraus     |
 | Karl       | Marx      |
 | Friedrich  | Engels    |
+| Nestor     | Makhno    |
 ```
 
 When rendered:
@@ -90,3 +92,4 @@ When rendered:
 | Mark       | Kraus     |
 | Karl       | Marx      |
 | Friedrich  | Engels    |
+| Nestor     | Makhno    |
