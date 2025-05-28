@@ -11,6 +11,7 @@ public class TableBuilderTests
     | 4        | 55555555555 | 6         |
     | 7        | 8           | 999999999 |
 
+
     """;
 
     public const string resultEscapedTable = """
@@ -18,7 +19,8 @@ public class TableBuilderTests
     | --------- |
     | \|        |
     | \\        |
-    
+
+
     """;
 
     [Fact]
