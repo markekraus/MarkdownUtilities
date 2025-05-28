@@ -36,7 +36,7 @@ Then you can use it un your code like so:
 ```csharp
 using MarkdownUtilities;
 
-var table = new MDTableBuilder()
+var table = new TableBuilder()
   .WithHeaders("A", "B", "C")
   .AddRow("1", "2", "3")
   .AddRow("4", "5", "6")
@@ -50,7 +50,7 @@ Download and extract the the last net21 release.
 
 ```powershell
 Add-Type -Path .\path\to\MarkdownUtilities.dll
-$builder = [MarkdownUtilities.MDTableBuilder]::New()
+$builder = [MarkdownUtilities.TableBuilder]::New()
 $builder.WithHeaders("A", "B", "C").
     AddRow("1", "2", "3").
     AddRow("4", "5", "6").
@@ -65,7 +65,7 @@ $builder.WithHeaders("A", "B", "C").
 The table builder will build a markdown representation of data. It will automatically escape characters that may break the table. It also auto-sizes the columns so that they appear uniform in raw text.
 
 ```csharp
-var table = new MDTableBuilder()
+var table = new TableBuilder()
   .WithHeaders("First Name", "Last Name")
   .AddRow("Mark", "Kraus")
   .AddRow("Karl", "Marx")
