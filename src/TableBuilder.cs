@@ -2,24 +2,26 @@
 using System.Text;
 
 namespace MarkdownUtilities;
-public class MDTableBuilder
+public class TableBuilder
 {
-    public ImmutableArray<MDTableColumn> Columns { get; private set; }
+    public ImmutableArray<TableColumn> Columns { get; private set; }
     public int RowCount { get; private set; }
     public int ColumnCount { get; private set; }
-    public MDTableBuilder() { }
+    private readonly StringBuilder sb;
+    public TableBuilder() => sb = new();
+    public TableBuilder(StringBuilder sb) => this.sb = sb;
 
-    public MDTableBuilder WithHeaders(params string[] Headers)
+    public TableBuilder WithHeaders(params string[] Headers)
     {
 
-        var columns = Array.ConvertAll(Headers, h => new MDTableColumn(h));
+        var columns = Array.ConvertAll(Headers, h => new TableColumn(h));
         Columns = ImmutableArray.Create(columns);
         RowCount = 0;
         ColumnCount = Columns.Length;
         return this;
     }
 
-    public MDTableBuilder AddRow(params string[] row)
+    public TableBuilder AddRow(params string[] row)
     {
         if (row.Length != ColumnCount)
             throw new ArgumentOutOfRangeException(nameof(row), row, $"Supplied row item count does not match the number of columns. Expected {ColumnCount} row items.");
@@ -29,14 +31,16 @@ public class MDTableBuilder
         return this;
     }
 
-    public string Build() => ToString();
-
-    public override string ToString()
-    {
-        var sb = new StringBuilder()
+    public StringBuilder Build() =>
+        sb
             .AppendHeaderRow(this)
             .AppendSeparatorRow(this)
             .AppendRows(this);
-        return sb.ToString();
-    }    
+
+    public override string ToString() =>
+         sb
+            .AppendHeaderRow(this)
+            .AppendSeparatorRow(this)
+            .AppendRows(this)
+            .ToString();
 }

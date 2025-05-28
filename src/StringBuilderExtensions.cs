@@ -4,8 +4,9 @@ namespace MarkdownUtilities;
 
 internal static class StringBuilderExtensions
 {
-    public static StringBuilder AppendHeaderRow(this StringBuilder sb, MDTableBuilder TB) => sb.AppendHeaderRow(TB.Columns);
-    public static StringBuilder AppendHeaderRow(this StringBuilder sb, IEnumerable<MDTableColumn> Columns)
+    public static TableBuilder NewTable(this StringBuilder sb) => new(sb);
+    public static StringBuilder AppendHeaderRow(this StringBuilder sb, TableBuilder TB) => sb.AppendHeaderRow(TB.Columns);
+    public static StringBuilder AppendHeaderRow(this StringBuilder sb, IEnumerable<TableColumn> Columns)
     {
         sb.Append('|');
         foreach (var column in Columns)
@@ -18,9 +19,9 @@ internal static class StringBuilderExtensions
         return sb;
     }
 
-    public static StringBuilder AppendSeparatorRow(this StringBuilder sb, MDTableBuilder TB, char SeparatorChar = '-') =>
+    public static StringBuilder AppendSeparatorRow(this StringBuilder sb, TableBuilder TB, char SeparatorChar = '-') =>
         sb.AppendSeparatorRow(TB.Columns, SeparatorChar);
-    public static StringBuilder AppendSeparatorRow(this StringBuilder sb, IEnumerable<MDTableColumn> Columns, char SeparatorChar = '-')
+    public static StringBuilder AppendSeparatorRow(this StringBuilder sb, IEnumerable<TableColumn> Columns, char SeparatorChar = '-')
     {
         sb.Append('|');
         foreach (var column in Columns)
@@ -33,7 +34,7 @@ internal static class StringBuilderExtensions
         return sb;
     }
 
-    public static StringBuilder AppendRows(this StringBuilder sb, MDTableBuilder TB)
+    public static StringBuilder AppendRows(this StringBuilder sb, TableBuilder TB)
     {
         for (int i = 0; i < TB.RowCount; i++)
         {

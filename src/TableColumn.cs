@@ -2,7 +2,7 @@ using System.Collections.Immutable;
 
 namespace MarkdownUtilities;
 
-public class MDTableColumn
+public class TableColumn
 {
     public readonly string Header;
     public ImmutableArray<string> Rows => ImmutableArray.Create<string>(_rows.ToArray());
@@ -10,9 +10,9 @@ public class MDTableColumn
     public int RowCount => _rows is null ? 0 : _rows.Count;
     private List<string> _rows = new();
 
-    public MDTableColumn(string Header)
+    public TableColumn(string Header)
     {
-        this.Header = string.IsNullOrWhiteSpace(Header) ? " " : Header;
+        this.Header = string.IsNullOrWhiteSpace(Header) ? " " : EscapeText(Header);
         this.MaxWidth = this.Header.Length;
     }
 
