@@ -1,5 +1,15 @@
 <Solution>
+  <Configurations>
+    <BuildType Name="net6" />
+    <BuildType Name="net21" />
+  </Configurations>
   <Folder Name="/src/">
-    <Project Path="src/MarkdownUtilities.csproj" />
+    <Project Path="src/MarkdownUtilities.csproj">
+      <BuildType Solution="net6|*" Project="net6" />
+      <BuildType Solution="net21|*" Project="net21" />
+    </Project>
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/tests.csproj" />
   </Folder>
 </Solution>

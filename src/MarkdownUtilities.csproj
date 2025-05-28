@@ -8,19 +8,19 @@
     <OutputType>Library</OutputType>
     <PlatformTarget>AnyCPU</PlatformTarget>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-    <Configurations>ML_Cpp_CoreCLR;net21</Configurations>
+    <Configurations>net6;net21</Configurations>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)'=='ML_Cpp_CoreCLR'">
+  <PropertyGroup Condition="'$(Configuration)'=='net6'">
     <TargetFramework>net6</TargetFramework>
-    <OutputPath>..\Release\MarkdownUtilities.MelonLoader.IL2CPP.CoreCLR\</OutputPath>
-    <AssemblyName>MarkdownUtilities.ML.IL2CPP.CoreCLR</AssemblyName>
+    <OutputPath>..\Release\MarkdownUtilities.net6\</OutputPath>
+    <AssemblyName>MarkdownUtilities.net6</AssemblyName>
     <DebugSymbols>False</DebugSymbols>
     <DebugType>None</DebugType>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)'=='net21'">
     <OutputPath>..\Release\MarkdownUtilities.net21\</OutputPath>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <AssemblyName>MarkdownUtilities</AssemblyName>
+    <AssemblyName>MarkdownUtilities.net21</AssemblyName>
     <DebugSymbols>False</DebugSymbols>
     <DebugType>None</DebugType>
   </PropertyGroup>
