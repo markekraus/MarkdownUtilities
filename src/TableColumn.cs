@@ -5,7 +5,7 @@ namespace MarkdownUtilities;
 public class TableColumn
 {
     public readonly string Header;
-    public ImmutableArray<string> Rows => ImmutableArray.Create<string>(_rows.ToArray());
+    public List<string> Rows => new(_rows);
     public int MaxWidth { get; private set; }
     public int RowCount => _rows is null ? 0 : _rows.Count;
     private List<string> _rows = new();
