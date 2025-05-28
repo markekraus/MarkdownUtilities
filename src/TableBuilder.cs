@@ -4,7 +4,7 @@ using System.Text;
 namespace MarkdownUtilities;
 public class TableBuilder
 {
-    public ImmutableArray<TableColumn> Columns { get; private set; }
+    public TableColumn[] Columns { get; private set; }
     public int RowCount { get; private set; }
     public int ColumnCount { get; private set; }
     private readonly StringBuilder sb;
@@ -15,7 +15,7 @@ public class TableBuilder
     {
 
         var columns = Array.ConvertAll(Headers, h => new TableColumn(h));
-        Columns = ImmutableArray.Create(columns);
+        Columns = columns;
         RowCount = 0;
         ColumnCount = Columns.Length;
         return this;
