@@ -35,12 +35,14 @@ public class TableBuilder
         sb
             .AppendHeaderRow(this)
             .AppendSeparatorRow(this)
-            .AppendRows(this);
+            .AppendRows(this)
+            .AppendLine("");
 
     public override string ToString() =>
          sb
             .AppendHeaderRow(this)
             .AppendSeparatorRow(this)
             .AppendRows(this)
+            .AppendLine("")
             .ToString();
 }
