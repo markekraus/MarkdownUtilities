@@ -4,9 +4,8 @@ namespace MarkdownUtilities;
 
 internal static class StringBuilderExtensions
 {
-    public static TableBuilder NewTable(this StringBuilder sb) => new(sb);
-    public static StringBuilder AppendHeaderRow(this StringBuilder sb, TableBuilder TB) => sb.AppendHeaderRow(TB.Columns);
-    public static StringBuilder AppendHeaderRow(this StringBuilder sb, IEnumerable<TableColumn> Columns)
+    internal static StringBuilder AppendHeaderRow(this StringBuilder sb, TableBuilder TB) => sb.AppendHeaderRow(TB.Columns);
+    internal static StringBuilder AppendHeaderRow(this StringBuilder sb, IEnumerable<TableColumn> Columns)
     {
         sb.Append('|');
         foreach (var column in Columns)
@@ -19,9 +18,9 @@ internal static class StringBuilderExtensions
         return sb;
     }
 
-    public static StringBuilder AppendSeparatorRow(this StringBuilder sb, TableBuilder TB, char SeparatorChar = '-') =>
+    internal static StringBuilder AppendSeparatorRow(this StringBuilder sb, TableBuilder TB, char SeparatorChar = '-') =>
         sb.AppendSeparatorRow(TB.Columns, SeparatorChar);
-    public static StringBuilder AppendSeparatorRow(this StringBuilder sb, IEnumerable<TableColumn> Columns, char SeparatorChar = '-')
+    internal static StringBuilder AppendSeparatorRow(this StringBuilder sb, IEnumerable<TableColumn> Columns, char SeparatorChar = '-')
     {
         sb.Append('|');
         foreach (var column in Columns)
@@ -34,7 +33,7 @@ internal static class StringBuilderExtensions
         return sb;
     }
 
-    public static StringBuilder AppendRows(this StringBuilder sb, TableBuilder TB)
+    internal static StringBuilder AppendRows(this StringBuilder sb, TableBuilder TB)
     {
         for (int i = 0; i < TB.RowCount; i++)
         {
@@ -50,7 +49,7 @@ internal static class StringBuilderExtensions
         return sb;
     }
 
-    public static StringBuilder AppendPadded(this StringBuilder sb, string Text, PositiveInt MaxWidth, char PaddingChar = ' ')
+    internal static StringBuilder AppendPadded(this StringBuilder sb, string Text, PositiveInt MaxWidth, char PaddingChar = ' ')
     {
         // null string to empty string
         var text = Text is null ? string.Empty : Text;

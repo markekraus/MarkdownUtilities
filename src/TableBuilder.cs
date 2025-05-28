@@ -31,7 +31,7 @@ public class TableBuilder
         return this;
     }
 
-    public StringBuilder Build() =>
+    public StringBuilder BuildTable() =>
         sb
             .AppendHeaderRow(this)
             .AppendSeparatorRow(this)
