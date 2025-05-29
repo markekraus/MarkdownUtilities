@@ -20,18 +20,18 @@ public static class TableBuilderExtensions
         nullCheckObject is null
         ? tb
         : tb.AddRow(notNullAction(nullCheckObject).ToArray());
-    internal static TableBuilder AddRow(this TableBuilder tb, string Property, bool Value) =>
+    public static TableBuilder AddRow(this TableBuilder tb, string Property, bool Value) =>
         tb.AddRow(Property, Value.ToString());
-    internal static TableBuilder AddRow(this TableBuilder tb, string Property, int Value) =>
+    public static TableBuilder AddRow(this TableBuilder tb, string Property, int Value) =>
         tb.AddRow(Property, Value.ToString());
-    internal static TableBuilder AddRow(this TableBuilder tb, string Property, long Value) =>
+    public static TableBuilder AddRow(this TableBuilder tb, string Property, long Value) =>
         tb.AddRow(Property, Value.ToString());
-    internal static TableBuilder AddRow(this TableBuilder tb, string Property, uint Value) =>
+    public static TableBuilder AddRow(this TableBuilder tb, string Property, uint Value) =>
         tb.AddRow(Property, Value.ToString());
-    internal static TableBuilder AddRow(this TableBuilder tb, string Property, ulong Value) =>
+    public static TableBuilder AddRow(this TableBuilder tb, string Property, ulong Value) =>
         tb.AddRow(Property, Value.ToString());
-    internal static TableBuilder AddRow(this TableBuilder tb, string Property, float Value) =>
+    public static TableBuilder AddRow(this TableBuilder tb, string Property, float Value) =>
         tb.AddRow(Property, Value.ToString());
-    internal static TableBuilder AddRow(this TableBuilder tb, string Property, double Value) =>
+    public static TableBuilder AddRow(this TableBuilder tb, string Property, double Value) =>
         tb.AddRow(Property, Value.ToString());
 }
