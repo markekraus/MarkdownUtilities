@@ -1,11 +1,11 @@
-using System.Collections.Immutable;
+using System.Collections.ObjectModel;
 
 namespace MarkdownUtilities;
 
 public class TableColumn
 {
     public readonly string Header;
-    public List<string> Rows => new(_rows);
+    public ReadOnlyCollection<string> Rows => _rows.AsReadOnly();
     public int MaxWidth { get; private set; }
     public int RowCount => _rows is null ? 0 : _rows.Count;
     private List<string> _rows = new();

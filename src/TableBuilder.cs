@@ -1,12 +1,19 @@
-﻿using System.Collections.Immutable;
+﻿using System.Collections.ObjectModel;
 using System.Text;
 
 namespace MarkdownUtilities;
 public class TableBuilder
 {
-    public TableColumn[] Columns { get; private set; }
+    public ReadOnlyCollection<TableColumn> Columns =>
+        _columns is not null
+            ? _columns.AsReadOnly()
+            : new List<TableColumn>().AsReadOnly();
     public int RowCount { get; private set; }
-    public int ColumnCount { get; private set; }
+    public int ColumnCount =>
+        _columns is not null
+            ? _columns.Count
+            : 0;
+    private List<TableColumn> _columns;
     private readonly StringBuilder sb;
     public TableBuilder() => sb = new();
     public TableBuilder(StringBuilder sb) => this.sb = sb;
@@ -15,9 +22,8 @@ public class TableBuilder
     {
 
         var columns = Array.ConvertAll(Headers, h => new TableColumn(h));
-        Columns = columns;
+        _columns = new(columns);
         RowCount = 0;
-        ColumnCount = Columns.Length;
         return this;
     }
 
@@ -26,7 +32,7 @@ public class TableBuilder
         if (row.Length != ColumnCount)
             throw new ArgumentOutOfRangeException(nameof(row), row, $"Supplied row item count does not match the number of columns. Expected {ColumnCount} row items.");
         for (int i = 0; i < row.Length; i++)
-                Columns[i].AddRow(row[i]);
+                _columns[i].AddRow(row[i]);
         RowCount++;
         return this;
     }
